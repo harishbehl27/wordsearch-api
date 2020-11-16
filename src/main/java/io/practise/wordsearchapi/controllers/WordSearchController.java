@@ -26,11 +26,12 @@ public class WordSearchController {
         int gridSize=grid[0].length;
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
-                gridToString+=grid[i][j];
+                gridToString+=grid[i][j]+" ";
             }
 
             gridToString+="\r\n";
         }
+        System.out.println(gridToString);
         return gridToString;
     }
 

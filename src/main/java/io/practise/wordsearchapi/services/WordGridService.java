@@ -47,9 +47,9 @@ public class WordGridService {
                     contents[i][j] = '_';
                 }
             }
-            Collections.shuffle(coordinates);
-            for (String word : words) {
 
+            for (String word : words) {
+                Collections.shuffle(coordinates);
                 for (Coordinate coordinate : coordinates) {
                     int x = coordinate.x;
                     int y = coordinate.y;
@@ -105,7 +105,7 @@ public class WordGridService {
                 }
 
             }
-            randomFillGrid(contents);
+            //randomFillGrid(contents);
 
             return contents;
 
@@ -119,7 +119,7 @@ public class WordGridService {
                     System.out.print(contents[i][j] + " ");
                 }
 
-                System.out.println("");
+                System.out.println(" ");
             }
         }
 
@@ -149,8 +149,9 @@ public class WordGridService {
                         return false;
                     }
                     for (int i = 0; i < wordLength; i++) {
-                        if (contents[coordinate.x + i][coordinate.y + i] != '_')
-                            return false;
+                            char letter=contents[coordinate.x + i][coordinate.y + i];
+                        if (letter != '_' && letter != word.charAt(i)) return false;
+
                     }
 
                     break;
@@ -161,8 +162,8 @@ public class WordGridService {
                     }
 
                     for (int i = 0; i < wordLength; i++) {
-                        if (contents[coordinate.x + i][coordinate.y] != '_')
-                            return false;
+                        char letter = contents[coordinate.x + i][coordinate.y];
+                        if (letter != '_' && letter != word.charAt(i)) return false;
                     }
 
                     break;
@@ -174,8 +175,8 @@ public class WordGridService {
                     }
 
                     for (int i = 0; i < wordLength; i++) {
-                        if (contents[coordinate.x][coordinate.y + i] != '_')
-                            return false;
+                        char letter=contents[coordinate.x][coordinate.y + i];
+                        if (letter != '_' && letter != word.charAt(i)) return false;
                     }
                     break;
 
@@ -184,8 +185,8 @@ public class WordGridService {
                         return false;
                     }
                     for (int i = 0; i < wordLength; i++) {
-                        if (contents[coordinate.x - i][coordinate.y - i] != '_')
-                            return false;
+                        char letter =contents[coordinate.x - i][coordinate.y - i];
+                        if (letter != '_' && letter != word.charAt(i)) return false;
                     }
 
                     break;
@@ -196,8 +197,8 @@ public class WordGridService {
                     }
 
                     for (int i = 0; i < wordLength; i++) {
-                        if (contents[coordinate.x - i][coordinate.y] != '_')
-                            return false;
+                        char letter=contents[coordinate.x - i][coordinate.y];
+                        if (letter != '_' && letter != word.charAt(i)) return false;
                     }
 
                     break;
@@ -209,12 +210,13 @@ public class WordGridService {
                     }
 
                     for (int i = 0; i < wordLength; i++) {
-                        if (contents[coordinate.x][coordinate.y - i] != '_')
-                            return false;
+                        char letter=contents[coordinate.x][coordinate.y - i];
+                        if (letter != '_' && letter != word.charAt(i)) return false;
                     }
                     break;
 
             }
+            System.out.println("I am here");
             return true;
         }
 
